@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Services | SAMTECHACADEMY{% endblock %}
+{% block content %}
+<section class="page-header"><p class="eyebrow">SERVICES</p><h1>What we can help you with.</h1><p>Choose a service and contact us for details, pricing and delivery timelines.</p></section>
+<section class="section"><div class="cards service-cards">
+{% for name, desc in services %}<article><div class="number">{{ "%02d"|format(loop.index) }}</div><h3>{{ name }}</h3><p>{{ desc }}</p><a href="{{ url_for('contact') }}">Ask about this →</a></article>{% endfor %}
+</div></section>
+{% endblock %}

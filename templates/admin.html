@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard | SAMTECHACADEMY{% endblock %}
+{% block content %}
+<section class="page-header"><p class="eyebrow">ADMIN DASHBOARD</p><h1>Manage SAMTECHACADEMY</h1><p>Publish opportunities and review users and messages.</p></section>
+<section class="section">
+<div class="admin-grid">
+<form method="post" action="{{ url_for('add_opportunity') }}" class="form-card"><h2>Add opportunity</h2><label>Title<input name="title" required></label><label>Category<input name="category" placeholder="Freelancing, Scholarship, AI..." required></label><label>Description<textarea name="description" rows="5" required></textarea></label><label>Application URL<input name="link" type="url"></label><button class="button">Publish</button></form>
+<div class="panel"><h2>Published opportunities</h2>{% for item in opportunities %}<div class="admin-row"><div><strong>{{ item.title }}</strong><small>{{ item.category }}</small></div><form method="post" action="{{ url_for('delete_opportunity', item_id=item.id) }}"><button class="danger">Delete</button></form></div>{% else %}<p>No opportunities yet.</p>{% endfor %}</div>
+<div class="panel"><h2>Users ({{ users|length }})</h2>{% for user in users %}<div class="admin-row"><div><strong>{{ user.name }}</strong><small>{{ user.email }}</small></div><span>{{ "Admin" if user.is_admin else "User" }}</span></div>{% endfor %}</div>
+<div class="panel"><h2>Messages ({{ messages|length }})</h2>{% for msg in messages %}<div class="message"><strong>{{ msg.name }} — {{ msg.email }}</strong><p>{{ msg.message }}</p></div>{% else %}<p>No messages yet.</p>{% endfor %}</div>
+</div>
+</section>
+{% endblock %}

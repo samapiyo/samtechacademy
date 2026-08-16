@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Opportunities | SAMTECHACADEMY{% endblock %}
+{% block content %}
+<section class="page-header"><p class="eyebrow">OPPORTUNITIES</p><h1>Find your next digital opportunity.</h1><p>Always verify eligibility, payment terms and platform requirements before applying.</p></section>
+<section class="section"><div class="opportunity-grid">
+{% for item in opportunities %}
+<article class="opportunity"><span>{{ item.category }}</span><h3>{{ item.title }}</h3><p>{{ item.description }}</p>{% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener">Visit application →</a>{% endif %}</article>
+{% else %}<p>No opportunities have been published yet.</p>{% endfor %}
+</div></section>
+{% endblock %}

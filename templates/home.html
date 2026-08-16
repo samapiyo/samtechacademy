@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}SAMTECHACADEMY | Digital Opportunities{% endblock %}
+{% block content %}
+<section class="hero">
+  <div>
+    <p class="eyebrow">DIGITAL OPPORTUNITIES • TRAINING • SERVICES</p>
+    <h1>Connecting Students to <span>Digital Opportunities.</span></h1>
+    <p class="hero-text">Practical digital services, skills training and opportunity discovery for students, freelancers and small businesses.</p>
+    <div class="actions">
+      <a class="button" href="{{ url_for('opportunities') }}">Explore Opportunities</a>
+      <a class="button secondary" href="{{ url_for('services') }}">View Services</a>
+    </div>
+  </div>
+  <div class="hero-card">
+    <div class="hero-icon">S</div>
+    <h3>Build. Learn. Earn.</h3>
+    <p>Discover useful digital skills and legitimate online opportunities.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-heading">
+    <div><p class="eyebrow">WHAT WE OFFER</p><h2>Services for the digital economy</h2></div>
+    <a href="{{ url_for('services') }}">See all services →</a>
+  </div>
+  <div class="cards">
+    <article><h3>Website Development</h3><p>Modern websites for students, entrepreneurs and small businesses.</p></article>
+    <article><h3>Digital Skills</h3><p>Practical training in programming, productivity and online work.</p></article>
+    <article><h3>Career Support</h3><p>CV, resume and LinkedIn profile improvement for professional growth.</p></article>
+  </div>
+</section>
+
+<section class="section dark-section">
+  <div class="section-heading"><div><p class="eyebrow">LATEST</p><h2>Digital opportunities</h2></div><a href="{{ url_for('opportunities') }}">View all →</a></div>
+  <div class="opportunity-grid">
+    {% for item in opportunities %}
+      <article class="opportunity">
+        <span>{{ item.category }}</span><h3>{{ item.title }}</h3><p>{{ item.description }}</p>
+        {% if item.link %}<a href="{{ item.link }}" target="_blank" rel="noopener">Open opportunity →</a>{% endif %}
+      </article>
+    {% else %}
+      <article class="opportunity"><h3>Opportunities coming soon</h3><p>The admin can publish opportunities from the dashboard.</p></article>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

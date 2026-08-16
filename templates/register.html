@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}Register | SAMTECHACADEMY{% endblock %}
+{% block content %}
+<section class="auth"><form method="post" class="form-card"><p class="eyebrow">JOIN US</p><h1>Create your account</h1><label>Name<input name="name" required></label><label>Email<input type="email" name="email" required></label><label>Password<input type="password" name="password" minlength="8" required></label><button class="button" type="submit">Create Account</button><p>Already registered? <a href="{{ url_for('login') }}">Login</a></p></form></section>
+{% endblock %}
